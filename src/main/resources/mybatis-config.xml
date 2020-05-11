@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!--修改mybatis的默认setting-->
+    <settings>
+        <setting name="safeRowBoundsEnabled" value="true"/>
+        <setting name="cacheEnabled" value="false" />
+        <setting name="useGeneratedKeys" value="true" />
+    </settings>
+
+    <!--设置类的别名，方便sql中的使用-->
+    <!--<typeAliases>-->
+    <!--</typeAliases>-->
+
+    <!--对mybatis监听-->
+    <!--<plugins>-->
+    <!--<plugin interceptor=""></plugin>-->
+    <!--</plugins>-->
+
+    <!--本地类无法与sql类映射时，可使用此将sql中转换成本地对应的-->
+    <!--<typeHandlers>-->
+    <!---->
+    <!--</typeHandlers>-->
+
+</configuration>

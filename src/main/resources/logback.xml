@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--scan:当此属性设置为true时，配置文件如果发生改变，将会被重新加载，默认值为true。-->
+<!--scanPeriod日志记录时间，默认时间ms-->
+<!--debug:当此属性设置为true时，将打印出logback内部日志信息，实时查看logback运行状态-->
+<configuration scan="true" scanPeriod="60 seconds">
+
+    <!--控制台输出-->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!--压缩log日志文件，根据时间压缩-->
+    <!--<appender name="permission" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+        <!--<file>${catalina.home}/logs/permission.log</file>-->
+        <!--<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+            <!--<FileNamePattern>${catalina.home}/logs/permission.%d{yyyy-MM-dd}.log.gz</FileNamePattern>-->
+        <!--</rollingPolicy>-->
+        <!--<layout class="ch.qos.logback.classic.PatternLayout">-->
+            <!--<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n</pattern>-->
+        <!--</layout>-->
+    <!--</appender>-->
+
+    <!--<logger name="xxx" level="INFO">-->
+        <!--<appender-ref ref="permission"/>-->
+    <!--</logger>-->
+
+    <!-- 日志输出级别 TRACE < DEBUG < INFO < WARN < ERROR -->
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+    </root>
+
+</configuration>
+
+
+<!--logback的配置，需要配置输出源appender，打日志的loger（子节点）和root（根节点）。-->
+<!--实际上，它输出日志是从子节点开始，子节点如果有输出源直接输出，-->
+<!--如果无，判断配置的additivity，是否向上级传递，即是否向root传递，传递则采用root的输出源，-->
+<!--否则不输出日志。-->
